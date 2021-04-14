@@ -1,2 +1,2 @@
-# weather-weather-app
+# weather-app
 Front end for display weather forecast  
