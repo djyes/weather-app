@@ -1,0 +1,53 @@
+
+<div class="content">
+  <div class="city-info">
+    <h2>{{cityInfo.name}} City</h2>
+    Lat : <span>{{cityInfo.coord.lat}}</span>
+    Lon : <span>{{cityInfo.coord.lon}}</span>
+  </div>
+  <div class="card-container">
+    <ng-container *ngFor="let item of list | keyvalue">
+      <div class="card" (click)="selectDay(item.key)" [class.active]="item.key === selectedKey">
+        {{item.key | date : 'fullDate'}}
+      </div>
+    </ng-container>
+  </div>
+</div>
+<div class="content table-section">
+  <div class="card-container">
+    <div class="active-card">
+      <table>
+        <thead>
+          <tr>
+            <th>Time</th>
+            <th>Weather</th>
+            <th>Discription</th>
+            <th>TEMP</th>
+            <th>PRESSURE</th>
+            <th>HUMIDITY</th>
+            <th>GROUND LVL</th>
+            <th>SEA LVL</th>
+            <th>WIND SPEED</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of selectedDay">
+            <td>{{item.dt_txt | date : 'HH:mm'}}</td>
+            <td>
+              <img class="weather-icon" src="{{item.weather.url}}" />
+            </td>
+            <td>{{item.weather[0].main}}</td>
+            <td>{{item.main.temp}} &#8451;</td>
+            <td>{{item.main.pressure}} hPa</td>
+            <td>{{item.main.humidity}} %</td>
+            <td>{{item.main.grnd_level}} hPa</td>
+            <td>{{item.main.sea_level}} hPa</td>
+            <td>{{item.wind.speed}} m/s</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
