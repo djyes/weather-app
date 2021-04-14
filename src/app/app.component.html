@@ -1,9 +1,9 @@
 
 <div class="content">
-  <div class="city-info">
-    <h2>{{cityInfo.name}} City</h2>
-    Lat : <span>{{cityInfo.coord.lat}}</span>
-    Lon : <span>{{cityInfo.coord.lon}}</span>
+  <div class="city-info" *ngIf="cityInfo">
+    <h2>{{cityInfo && cityInfo.name}} City</h2>
+    Lat : <span>{{cityInfo && cityInfo.coord.lat}}</span>
+    Lon : <span>{{cityInfo && cityInfo.coord.lon}}</span>
   </div>
   <div class="card-container">
     <ng-container *ngFor="let item of list | keyvalue">
